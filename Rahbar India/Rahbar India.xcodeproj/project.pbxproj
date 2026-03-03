@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BF30DD342F56C1580056B1F5 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BF30DD332F56C1580056B1F5 /* IQKeyboardManagerSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		BF30DBAA2F56AA190056B1F5 /* Rahbar India.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rahbar India.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF30DD342F56C1580056B1F5 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = "Rahbar India";
 			packageProductDependencies = (
+				BF30DD332F56C1580056B1F5 /* IQKeyboardManagerSwift */,
 			);
 			productName = "Rahbar India";
 			productReference = BF30DBAA2F56AA190056B1F5 /* Rahbar India.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = BF30DBA12F56AA190056B1F5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BF30DD322F56C1580056B1F5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BF30DBAB2F56AA190056B1F5 /* Products */;
 			projectDirPath = "";
@@ -341,6 +350,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF30DD322F56C1580056B1F5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF30DD332F56C1580056B1F5 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF30DD322F56C1580056B1F5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF30DBA22F56AA190056B1F5 /* Project object */;
 }

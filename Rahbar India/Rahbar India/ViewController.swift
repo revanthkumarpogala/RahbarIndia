@@ -7,13 +7,62 @@
 
 import UIKit
 
+import UIKit
+
 class ViewController: UIViewController {
+
+    // MARK: - Outlets
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var appleButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        setupUI()
     }
+
+    private func setupUI() {
+        // 1. Set the specific red color for "Rahbhar India"
+        let fullText = "Welcome\nto Rahbhar India"
+        let attributedString = NSMutableAttributedString(string: fullText)
+        
+        // Find the range of "Rahbhar India" to color it red
+        let range = (fullText as NSString).range(of: "Rahbhar India")
+        attributedString.addAttribute(.foregroundColor, value: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0), range: range)
+        
+        welcomeLabel.attributedText = attributedString
+        
+        // 2. Setup Apple Button Border
+        appleButton.layer.borderWidth = 1
+        appleButton.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+        appleButton.layer.cornerRadius = 12
+    }
+
+    // MARK: - Actions
+    
+    @IBAction func loginTapped(_ sender: UIButton) {
+        guard let email = emailTextField.text, !email.isEmpty,
+              let password = passwordTextField.text, !password.isEmpty else {
+            print("Please fill in all fields")
+            return
+        }
+        print("Logging in with: \(email)")
+    }
+    
+    @IBAction func forgotPasswordTapped(_ sender: UIButton) {
+        print("Forgot password clicked")
+    }
+    
+    @IBAction func signupTapped(_ sender: UIButton) {
+        print("Navigate to signup")
+    }
+    
+    @IBAction func appleLoginTapped(_ sender: UIButton) {
+        print("Continue with Apple clicked")
+    }
+
 
     func openWebView() {
         AuthService.shared.fetchWebViewToken { result in
