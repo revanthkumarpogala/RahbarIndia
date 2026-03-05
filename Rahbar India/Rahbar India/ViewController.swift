@@ -11,6 +11,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var orLabel: UILabel!
+    @IBOutlet weak var signUpLabel: UILabel!
+    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var forgotPassBtn: UIButton!
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var passwordLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var header: UILabel!
     // MARK: - Outlets
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -18,37 +26,157 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var appleButton: UIButton!
     
+    var emailValidated = false
+    var passwordValidated = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    @IBAction func onsignUpTapped(_ sender: Any) {
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController)!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func forgotPassBtnTapped(_ sender: Any) {
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "ForgotViewController") as? ForgotViewController)!
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     private func setupUI() {
+        
+        Utilities().setMulishBold(label: header, size: 20)
+        header.text = "Login "
+        header.textColor = UIColor.hexStringToUIColor(hex: "000000")
+        
+        Utilities().setJakrtaSansMedium(label: emailLabel, size: 12)
+        let emailFullText = "Email  *"
+        let emailattributedString = NSMutableAttributedString(string: emailFullText)
+        let emailrange = (emailFullText as NSString).range(of: "*")
+        emailattributedString.addAttribute(.foregroundColor,
+                                      value: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0),
+                                      range: emailrange)
+        emailLabel.attributedText = emailattributedString
+        
+        
+        Utilities().setJakrtaSansMedium(label: passwordLabel, size: 12)
+        let passwordFullText = "Password  *"
+        let passwordattributedString = NSMutableAttributedString(string: passwordFullText)
+        let passwordrange = (passwordFullText as NSString).range(of: "*")
+        passwordattributedString.addAttribute(.foregroundColor,
+                                      value: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0),
+                                      range: passwordrange)
+        passwordLabel.attributedText = passwordattributedString
+        
+        
         // 1. Set the specific red color for "Rahbhar India"
         let fullText = "Welcome\nto Rahbhar India"
         let attributedString = NSMutableAttributedString(string: fullText)
-        
+
+        // Set Inter-Bold font size 20 for entire text
+        let font = UIFont(name: "Inter-Bold", size: 20)!
+        attributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: fullText.count))
+
         // Find the range of "Rahbhar India" to color it red
         let range = (fullText as NSString).range(of: "Rahbhar India")
-        attributedString.addAttribute(.foregroundColor, value: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0), range: range)
-        
+        attributedString.addAttribute(.foregroundColor,
+                                      value: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0),
+                                      range: range)
+
         welcomeLabel.attributedText = attributedString
+        
+        
+
+        emailTextField.applyTextFieldDefaulyStyle(placeHoldertext: "Email")
+        passwordTextField.applyTextFieldDefaulyStyle(placeHoldertext: "Password")
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         
         // 2. Setup Apple Button Border
         appleButton.layer.borderWidth = 1
         appleButton.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
         appleButton.layer.cornerRadius = 12
+        
+        loginButton.isEnabled = false
+        loginButton.alpha = 0.5
+        
+        emailTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+
+        Utilities().setInterSemiBold(label: signUpLabel, size: 14)
+        signUpLabel.text = "Don’t have an account?"
+        signUpLabel.textColor = UIColor.hexStringToUIColor(hex: "000000")
+        
+        
+        Utilities().setInterRegular(label: orLabel, size: 12)
+        orLabel.text = "Or"
+        orLabel.textColor = UIColor.hexStringToUIColor(hex: "6C7278")
+        
+        forgotPassBtn.setButtonDefaults(
+            title: "Forgot Password?",
+            fontName: "Inter-SemiBold",
+            fontSize: 14,
+            color: .black
+        )
+
+        loginButton.setButtonDefaults(title: "Login", fontName: "Inter-Medium", fontSize: 16, color: .white)
+        
+        appleButton.setButtonDefaults(title: "Continue with Apple", fontName: "Inter-SemiBold", fontSize: 14, color: UIColor.hexStringToUIColor(hex: "1A1C1E"))
+                                      
+        signUpBtn.setButtonDefaults(
+            title: "Signup",
+            fontName: "Inter-SemiBold",
+            fontSize: 12,
+            color: UIColor.hexStringToUIColor(hex: "DC3545")
+        )
+        
     }
 
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc func textFieldChanged() {
+        
+        let email = emailTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
+        
+        emailValidated = Validations().isValidEmail(email: email)
+        passwordValidated = Validations().validatePassword(password)
+        
+        updateLoginButtonState()
+    }
+    
+    func updateLoginButtonState() {
+        
+        if emailValidated && passwordValidated {
+            loginButton.isEnabled = true
+            loginButton.alpha = 1.0
+        } else {
+            loginButton.isEnabled = false
+            loginButton.alpha = 0.5
+        }
+    }
+    @IBAction func onBackTapped(_ sender: Any) {
+    }
     // MARK: - Actions
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        guard let email = emailTextField.text, !email.isEmpty,
-              let password = passwordTextField.text, !password.isEmpty else {
-            print("Please fill in all fields")
-            return
-        }
-        print("Logging in with: \(email)")
+        
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text else { return }
+        callLoginAPI(email: email, password: password)
     }
     
     @IBAction func forgotPasswordTapped(_ sender: UIButton) {
@@ -214,4 +342,66 @@ class ViewController: UIViewController {
         }
     }
 
+}
+
+
+
+extension UITextField {
+    func applyTextFieldDefaulyStyle(placeHoldertext: String = "") {
+        
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.hexStringToUIColor(hex: "DEE2E6").cgColor
+        layer.cornerRadius = 12
+        
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: frame.height))
+        leftView = paddingView
+        leftViewMode = .always
+        
+        Utilities().setTextFieldPlaceholderFontAndColor(
+            color: UIColor.hexStringToUIColor(hex: "7B8086"),
+            font: UIFont(name: "Inter-Medium", size: 14)!,
+            textfield: self,
+            placeHolderText: placeHoldertext
+        )
+    }
+}
+
+extension ViewController : UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            if !Validations().isValidEmail(email: emailTextField.text!) {
+                UIUtilites().showAlert(title: "Error", message: "Please enter valid email", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
+            }
+        } else if textField == passwordTextField {
+            if !Validations().validatePassword(passwordTextField.text!) {
+                UIUtilites().showAlert(title: "Error", message: "Password should be 6-15 characters long", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
+            }
+        }
+    }
+}
+
+extension UIButton {
+    
+    func setButtonDefaults(title: String,
+                           fontName: String = "Inter-Medium",
+                           fontSize: CGFloat = 12,
+                           color: UIColor = .black) {
+        
+        guard let font = UIFont(name: fontName, size: fontSize) else {
+            print("Font not found:", fontName)
+            return
+        }
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: color
+        ]
+        
+        let attributedTitle = NSAttributedString(string: title, attributes: attributes)
+        
+        setAttributedTitle(attributedTitle, for: .normal)
+        setAttributedTitle(attributedTitle, for: .highlighted)
+        setAttributedTitle(attributedTitle, for: .selected)
+        setAttributedTitle(attributedTitle, for: .disabled)
+    }
 }
