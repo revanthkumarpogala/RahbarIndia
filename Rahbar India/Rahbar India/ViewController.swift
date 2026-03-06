@@ -11,6 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var passToggleBtn: UIButton!
     @IBOutlet weak var orLabel: UILabel!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpBtn: UIButton!
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
     
     var emailValidated = false
     var passwordValidated = false
+    var iconClick = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +53,14 @@ class ViewController: UIViewController {
     }
     private func setupUI() {
         
+        cardView.layer.cornerRadius = 15
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOpacity = 0.1
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        cardView.layer.shadowRadius = 10
+        
         Utilities().setMulishBold(label: header, size: 20)
-        header.text = "Login "
+        header.text = "Login"
         header.textColor = UIColor.hexStringToUIColor(hex: "000000")
         
         Utilities().setJakrtaSansMedium(label: emailLabel, size: 12)
@@ -143,6 +151,17 @@ class ViewController: UIViewController {
         
     }
 
+    @IBAction func passwordShowToggle(_ sender: Any) {
+        
+        if iconClick {
+                passwordTextField.isSecureTextEntry = false
+            passToggleBtn.setImage(UIImage(named: "pass_show"), for: .normal)
+            } else {
+                passwordTextField.isSecureTextEntry = true
+                passToggleBtn.setImage(UIImage(named: "pass_hide"), for: .normal)
+            }
+            iconClick = !iconClick
+    }
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -158,6 +177,7 @@ class ViewController: UIViewController {
         updateLoginButtonState()
     }
     
+    
     func updateLoginButtonState() {
         
         if emailValidated && passwordValidated {
@@ -169,6 +189,7 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func onBackTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     // MARK: - Actions
     
@@ -177,10 +198,6 @@ class ViewController: UIViewController {
         guard let email = emailTextField.text,
               let password = passwordTextField.text else { return }
         callLoginAPI(email: email, password: password)
-    }
-    
-    @IBAction func forgotPasswordTapped(_ sender: UIButton) {
-        print("Forgot password clicked")
     }
     
     @IBAction func signupTapped(_ sender: UIButton) {
@@ -254,20 +271,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-    
-    func forgotPasswor(email: String) {
-        AuthService.shared.forgotPassword(email: email) { result in
-            
-            switch result {
-            case .success(let message):
-                print("Success:", message)
-                
-            case .failure(let error):
-                print("Error:", error.localizedDescription)
-            }
-        }
-    }
     // update fcm
     
     func updateFCMToken(token: String, userId: String) {
@@ -296,6 +299,7 @@ class ViewController: UIViewController {
                 
             case .failure(let error):
                 print("Login Failed:", error.localizedDescription)
+                UIUtilites().showAlert(title: "Error...!", message: error.localizedDescription, vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
             }
         }
     }
@@ -368,13 +372,17 @@ extension UITextField {
 
 extension ViewController : UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField == emailTextField {
-            if !Validations().isValidEmail(email: emailTextField.text!) {
-                UIUtilites().showAlert(title: "Error", message: "Please enter valid email", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
-            }
-        } else if textField == passwordTextField {
-            if !Validations().validatePassword(passwordTextField.text!) {
-                UIUtilites().showAlert(title: "Error", message: "Password should be 6-15 characters long", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
+        if textField.text?.count ?? 0 > 0 {
+            
+            
+            if textField == emailTextField {
+                if !Validations().isValidEmail(email: emailTextField.text!) {
+                    UIUtilites().showAlert(title: "Error", message: "Please enter valid email", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
+                }
+            } else if textField == passwordTextField {
+                if !Validations().validatePassword(passwordTextField.text!) {
+                    UIUtilites().showAlert(title: "Error", message: "Password should be 6-15 characters long", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
+                }
             }
         }
     }
