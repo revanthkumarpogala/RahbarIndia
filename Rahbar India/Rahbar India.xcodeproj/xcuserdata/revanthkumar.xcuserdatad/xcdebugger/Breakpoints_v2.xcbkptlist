@@ -14,10 +14,10 @@
             filePath = "Rahbar India/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "callLoginAPI(email:password:)"
-            landmarkType = "7">
+            startingLineNumber = "280"
+            endingLineNumber = "280"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -34,36 +34,6 @@
             endingLineNumber = "272"
             landmarkName = "callRegisterAPI(name:mobile:email:password:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "CF87CA53-7AD3-419F-9730-A789CE6C69CE - 9e95429ec780335d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in Rahbar_India.RegisterViewController.callRegisterAPI(name: Swift.String, mobile: Swift.String, email: Swift.String, password: Swift.String) -&gt; ()"
-                  moduleName = "Rahbar India.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/revanthkumar/Desktop/Rahbar/Rahbar%20India/Rahbar%20India/RegisterViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "273"
-                  endingLineNumber = "273">
-               </Location>
-               <Location
-                  uuid = "CF87CA53-7AD3-419F-9730-A789CE6C69CE - 9e95429ec780335d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in Rahbar_India.RegisterViewController.callRegisterAPI(name: Swift.String, mobile: Swift.String, email: Swift.String, password: Swift.String) -&gt; ()"
-                  moduleName = "Rahbar India.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/revanthkumar/Desktop/Rahbar/Rahbar%20India/Rahbar%20India/RegisterViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "273"
-                  endingLineNumber = "273">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -76,9 +46,9 @@
             filePath = "Rahbar India/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
-            landmarkName = "callLoginAPI(email:password:)"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "updateFCMToken(token:userId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -226,33 +226,9 @@ class ViewController: UIViewController {
         }
     }
     
-    func deleteAccount() {
-        AuthService.shared.deleteAccount { result in
-            
-            switch result {
-            case .success(let message):
-                print("Account Deleted:", message)
-                // Navigate to Login Screen
-                
-            case .failure(let error):
-                print("Delete Failed:", error.localizedDescription)
-            }
-        }
-    }
+
     
-    func logout() {
-        AuthService.shared.logout { result in
-            switch result {
-            case .success(let message):
-                print("Logout Success:", message)
-                
-                // Navigate to Login Screen
-                
-            case .failure(let error):
-                print("Logout Failed:", error.localizedDescription)
-            }
-        }
-    }
+
     
     func resetPassword(email: String, password: String, token: String) {
         AuthService.shared.resetPassword(

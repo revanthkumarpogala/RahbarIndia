@@ -15,6 +15,11 @@ class WebViewController: UIViewController {
         loadWebPage()
     }
 
+    @IBAction func onSettingsTapped(_ sender: Any) {
+        let vc = (self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController)!
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     private func loadWebPage() {
         guard let token = token else { return }
 

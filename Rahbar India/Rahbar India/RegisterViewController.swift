@@ -273,6 +273,8 @@ class RegisterViewController: UIViewController {
             case .success(let message):
                 print("Registration Success:", message)
                 // Navigate to Home
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
                 
             case .failure(let error):
                 print("Registration Failed:", error.localizedDescription)

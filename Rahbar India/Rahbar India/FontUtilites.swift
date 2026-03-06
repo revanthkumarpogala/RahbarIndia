@@ -17,6 +17,16 @@ class Utilities {
         label.textColor = textColor
     }
     
+    func setMulishSemiBold(label : UILabel, size: CGFloat) {
+        label.font = UIFont(name: "Mulish-SemiBold", size: size)
+        label.textColor = textColor
+    }
+    
+    func setMulishRegular(label : UILabel, size: CGFloat) {
+        label.font = UIFont(name: "Mulish-Regular", size: size)
+        label.textColor = textColor
+    }
+    
     func setJakrtaSansRegular(label : UILabel, size: CGFloat) {
         label.font = UIFont(name: "PlusJakartaSans-Regular", size: size)
         label.textColor = textColor
