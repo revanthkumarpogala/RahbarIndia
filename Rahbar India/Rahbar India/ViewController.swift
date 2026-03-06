@@ -325,26 +325,7 @@ class ViewController: UIViewController {
         }
     }
 
-    func callRegisterAPI(name: String,
-                         mobile: String,
-                         email: String,
-                         password: String) {
-        
-        AuthService.shared.registerUser(name: name,
-                     mobile: mobile,
-                     email: email,
-                     password: password) { result in
-            
-            switch result {
-            case .success(let message):
-                print("Registration Success:", message)
-                // Navigate to Home
-                
-            case .failure(let error):
-                print("Registration Failed:", error.localizedDescription)
-            }
-        }
-    }
+
 
 }
 

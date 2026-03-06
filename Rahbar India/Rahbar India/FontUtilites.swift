@@ -148,6 +148,11 @@ class Validations {
     func isNameValid(name: String) -> Bool {
         name.count > 2
     }
+    func isValidMobile(num: String) -> Bool {
+        let phoneRegex = "^[6-9]\\d{9}$"
+        let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phonePredicate.evaluate(with: num)
+    }
     
 }
 
