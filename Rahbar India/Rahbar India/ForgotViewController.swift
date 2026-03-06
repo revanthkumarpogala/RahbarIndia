@@ -36,6 +36,9 @@ class ForgotViewController: UIViewController {
             case .success(let message):
                 print("Success:", message)
                 
+                UIUtilites().showAlert(title: "Success...!", message: message, vc: self, okAction: UIAlertAction(title: "Okay", style: .default, handler: { action in
+                    self.navigationController?.popViewController(animated: true)
+                }))
             case .failure(let error):
                 print("Error:", error.localizedDescription)
                 UIUtilites().showAlert(title: "Error...!", message: error.localizedDescription, vc: self, okAction: UIAlertAction(title: "Okay", style: .default))

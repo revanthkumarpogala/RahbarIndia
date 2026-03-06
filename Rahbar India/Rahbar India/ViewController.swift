@@ -297,6 +297,9 @@ class ViewController: UIViewController {
                 print("Login Success:", message)
                 // Navigate to Home Screen
                 
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController
+                self.navigationController?.pushViewController(vc!, animated: true)
+                
             case .failure(let error):
                 print("Login Failed:", error.localizedDescription)
                 UIUtilites().showAlert(title: "Error...!", message: error.localizedDescription, vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
