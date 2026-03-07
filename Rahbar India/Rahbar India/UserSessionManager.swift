@@ -14,10 +14,11 @@ final class UserSessionManager {
     
     private let userKey = "loggedInUser"
     private let tokenKey = "authToken"
+    private let webToken = "webtoken"
     
     // MARK: - Save Session
     
-    func saveSession(user: User, token: String) {
+    func saveSession(user: User?, token: String) {
         if let encodedUser = try? JSONEncoder().encode(user) {
             UserDefaults.standard.set(encodedUser, forKey: userKey)
         }
@@ -30,6 +31,13 @@ final class UserSessionManager {
         return UserDefaults.standard.string(forKey: tokenKey)
     }
     
+    func getWebToken() -> String? {
+        return UserDefaults.standard.string(forKey: webToken)
+    }
+    
+    func saveWebToken(token: String) {
+        UserDefaults.standard.set(token, forKey: webToken)
+    }
     // MARK: - Get User
     
     func getUser() -> User? {

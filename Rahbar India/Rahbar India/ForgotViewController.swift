@@ -35,6 +35,7 @@ class ForgotViewController: UIViewController {
             switch result {
             case .success(let message):
                 print("Success:", message)
+                self.emailTextField.text = ""
                 
                 UIUtilites().showAlert(title: "Success...!", message: message, vc: self, okAction: UIAlertAction(title: "Okay", style: .default, handler: { action in
                     self.navigationController?.popViewController(animated: true)

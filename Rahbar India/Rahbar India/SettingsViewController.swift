@@ -19,6 +19,10 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let user = UserSessionManager.shared.getUser()
+        let name = user?.name
+        let email = user?.email
+        
         // Do any additional setup after loading the view.
         
         self.detailsTV.register(UINib(nibName: "SettingsFirstCell", bundle: nil),
@@ -32,11 +36,11 @@ class SettingsViewController: UIViewController {
         detailsTV.estimatedRowHeight = 120
         
         Utilities().setMulishRegular(label: mainHedaer, size: 15)
-        mainDsec.text = "Jone Master"
+        mainDsec.text = name
         mainHedaer.textColor = UIColor.black
         
         Utilities().setMulishRegular(label: mainDsec, size: 15)
-        mainHedaer.text = "jonemaster@gmail.com"
+        mainHedaer.text = email
         mainDsec.textColor = UIColor.black
         
         Utilities().setMulishSemiBold(label: bottomLabel, size: 14)
@@ -180,8 +184,17 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             case .success(let message):
                 print("Logout Success:", message)
                 
+                UserSessionManager.shared.clearSession()
                 // Navigate to Login Screen
-                self.navigationController?.popToRootViewController(animated: true)
+                // Load Login Navigation
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let loginNav = storyboard.instantiateViewController(withIdentifier: "lognav") as! UINavigationController
+                
+                // Get SceneDelegate
+                if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                    sceneDelegate.window?.rootViewController = loginNav
+                    sceneDelegate.window?.makeKeyAndVisible()
+                }
                 
             case .failure(let error):
                 print("Logout Failed:", error.localizedDescription)
@@ -198,7 +211,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             self?.deleteAccount()
         })
         
-        UIUtilites().showAlert(title: title, message: message, vc: self, okAction: delete, cancelAction: cancel)
+        UIUtilites().showAlert(title: title, message: message, vc: self, okAction: cancel, cancelAction: delete)
     }
     func deleteAccount() {
         AuthService.shared.deleteAccount { result in

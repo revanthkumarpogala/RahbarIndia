@@ -309,11 +309,22 @@ final class AuthService {
             
             switch result {
             case .success(let data):
+                
+                
+                print("🟢 API Success - Raw Data Received")
+
+                if let rawString = String(data: data, encoding: .utf8) {
+                    print("🟢 RAW RESPONSE:")
+                    print(rawString)
+                }
+                
                 do {
+                    
+                    
                     let response = try JSONDecoder().decode(WebViewTokenResponse.self, from: data)
                     
                     if response.status == 1,
-                       let token = response.token {
+                       let token = response.data?.token {
                         completion(.success(token))
                     } else {
                         completion(.failure(AuthError.apiError(response.message)))
@@ -335,33 +346,39 @@ final class AuthService {
         userId: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
-        
+
         let parameters: [[String: Any]] = [
             ["key": "token", "value": fcmToken, "type": "text"],
             ["key": "userId", "value": userId, "type": "text"]
         ]
-        
+
         APIManager.shared.postMultipartRequest(
             urlString: APIConstants.Device.updateFCMToken,
             parameters: parameters,
-            requiresAuth: true   // ✅ token auto attached
+            requiresAuth: true
         ) { result in
-            
+
             switch result {
+
             case .success(let data):
+
+                print("RAW RESPONSE:")
+    
+                print(String(data: data, encoding: .utf8) ?? "")
+
                 do {
-                    let response = try JSONDecoder().decode(CommonResponse.self, from: data)
-                    
-                    if response.status == 1 {
+                    let response = try JSONDecoder().decode(CommonResponseToken.self, from: data)
+
+                    if response.status {
                         completion(.success(response.message))
                     } else {
                         completion(.failure(AuthError.apiError(response.message)))
                     }
-                    
+
                 } catch {
                     completion(.failure(AuthError.decodingFailed))
                 }
-                
+
             case .failure(let error):
                 completion(.failure(error))
             }

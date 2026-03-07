@@ -9,12 +9,20 @@ class WebViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        token = UserSessionManager.shared.getToken()
         webView.navigationDelegate = self
+
+        token = UserSessionManager.shared.getWebToken()
         loadWebPage()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    
     @IBAction func onSettingsTapped(_ sender: Any) {
         let vc = (self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController)!
         
@@ -30,6 +38,18 @@ class WebViewController: UIViewController {
 
         webView.load(URLRequest(url: url))
     }
+    
+    
+    
+//    func openWebView(token: String) {
+//
+//        let urlString = "https://rahbarindia.in/webview?token=\(token)"
+//
+//        if let url = URL(string: urlString) {
+//            let request = URLRequest(url: url)
+//            webView.load(request)
+//        }
+//    }
 }
 
 extension WebViewController: WKNavigationDelegate {

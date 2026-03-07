@@ -175,6 +175,7 @@ final class APIManager {
         request.httpMethod = "POST"
         request.httpBody = body
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
         
         configureHeaders(for: &request,
                          additionalHeaders: headers,

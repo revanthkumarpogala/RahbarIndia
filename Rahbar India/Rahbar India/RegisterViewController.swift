@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AuthenticationServices
 
 class RegisterViewController: UIViewController {
     @IBOutlet weak var scrollViewwwww: UIScrollView!
@@ -265,7 +266,77 @@ class RegisterViewController: UIViewController {
     @IBAction func acceptBtnTapped(_ sender: Any) {
         self.openURL(strURL: "https://rahbarindia.in/terms-conditions")
     }
+    
     @IBAction func appleBtnTapped(_ sender: Any) {
+        let provider = ASAuthorizationAppleIDProvider()
+            let request = provider.createRequest()
+            
+            request.requestedScopes = [.fullName, .email]
+
+            let authController = ASAuthorizationController(authorizationRequests: [request])
+            authController.delegate = self
+            authController.presentationContextProvider = self
+            authController.performRequests()
+    }
+    
+    func updateFCMToken(token: String, userId: String) {
+        AuthService.shared.updateFCMToken(
+            fcmToken: token,
+            userId: userId
+        ) { result in
+            
+            switch result {
+            case .success(let message):
+                print("FCM Updated:", message)
+                self.openWebView()
+            case .failure(let error):
+                print("Failed:", error.localizedDescription)
+            }
+        }
+        
+    }
+    
+    func openWebView() {
+        AuthService.shared.fetchWebViewToken { result in
+            
+            switch result {
+            case .success(let token):
+                DispatchQueue.main.async {
+                    let vc: WebViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+                    vc.token = token
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func callAppleLogin(appleID: String,
+                        email: String,
+                        name: String,
+                        identityToken: String) {
+        
+        AuthService.shared.loginWithApple(appleID: appleID,
+                       email: email,
+                       name: name,
+                       identityToken: identityToken) { result in
+            
+            switch result {
+            case .success(let message):
+                print("Apple Login Success:", message)
+                // Navigate to Home
+                let fcmToken = UserDefaults.standard.string(forKey: "fcm_token") ?? ""
+                let userID = "\(UserSessionManager.shared.getUser()?.id ?? 0)"
+                self.updateFCMToken(token: fcmToken, userId: userID)
+                
+                
+            case .failure(let error):
+                print("Apple Login Failed:", error.localizedDescription)
+                UIUtilites().showAlert(title: "Error...!", message: error.localizedDescription, vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
+            }
+        }
     }
     
     @IBAction func alreadyBtnTapped(_ sender: Any) {
@@ -300,9 +371,15 @@ class RegisterViewController: UIViewController {
             case .success(let message):
                 print("Registration Success:", message)
                 // Navigate to Home
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as? WebViewController
-                self.navigationController?.pushViewController(vc!, animated: true)
-                
+                self.nameTF.text = ""
+                self.mobileTF.text = ""
+                self.emailTF.text = ""
+                self.passwordTF.text = ""
+                self.cnfPassTF.text = ""
+            
+                let fcmToken = UserDefaults.standard.string(forKey: "fcm_token") ?? ""
+                let userID = "\(UserSessionManager.shared.getUser()?.id ?? 0)"
+                self.updateFCMToken(token: fcmToken, userId: userID)
             case .failure(let error):
                 print("Registration Failed:", error.localizedDescription)
                 UIUtilites().showAlert(title: "Error...!", message: error.localizedDescription, vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
@@ -349,5 +426,47 @@ extension RegisterViewController : UITextFieldDelegate {
                 }
             }
         }
+    }
+}
+
+
+extension RegisterViewController: ASAuthorizationControllerDelegate {
+
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithAuthorization authorization: ASAuthorization) {
+
+        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else { return }
+
+        let userId = credential.user
+
+        let idToken = String(data: credential.identityToken ?? Data(), encoding: .utf8) ?? ""
+        let authCode = String(data: credential.authorizationCode ?? Data(), encoding: .utf8) ?? ""
+
+        let email = credential.email ?? ""
+        let firstName = credential.fullName?.givenName ?? ""
+        let lastName = credential.fullName?.familyName ?? ""
+
+        print("UserID:", userId)
+        print("Token:", idToken)
+        print("Code:", authCode)
+        print("Email:", email)
+        print("Name:", firstName, lastName)
+        DispatchQueue.global().async {
+            self.callAppleLogin(appleID: email, email: email, name: firstName + lastName, identityToken: idToken)
+        }
+    }
+
+    func authorizationController(controller: ASAuthorizationController,
+                                 didCompleteWithError error: Error) {
+
+        print("Apple login failed:", error.localizedDescription)
+    }
+}
+
+
+extension RegisterViewController: ASAuthorizationControllerPresentationContextProviding {
+
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
     }
 }

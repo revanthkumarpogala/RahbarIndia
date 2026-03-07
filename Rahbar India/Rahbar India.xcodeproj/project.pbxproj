@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		BF30DD342F56C1580056B1F5 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BF30DD332F56C1580056B1F5 /* IQKeyboardManagerSwift */; };
+		BFDE15832F5C47A0006D8C6E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFDE15822F5C47A0006D8C6E /* WebKit.framework */; };
+		BFDE15F92F5C52E1006D8C6E /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = BFDE15F82F5C52E1006D8C6E /* FirebaseCore */; };
+		BFDE15FB2F5C52E1006D8C6E /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = BFDE15FA2F5C52E1006D8C6E /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BF30DBAA2F56AA190056B1F5 /* Rahbar India.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rahbar India.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFDE15822F5C47A0006D8C6E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -40,6 +44,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFDE15FB2F5C52E1006D8C6E /* FirebaseMessaging in Frameworks */,
+				BFDE15832F5C47A0006D8C6E /* WebKit.framework in Frameworks */,
+				BFDE15F92F5C52E1006D8C6E /* FirebaseCore in Frameworks */,
 				BF30DD342F56C1580056B1F5 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				BF30DBAC2F56AA190056B1F5 /* Rahbar India */,
+				BFDE15812F5C47A0006D8C6E /* Frameworks */,
 				BF30DBAB2F56AA190056B1F5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +69,14 @@
 				BF30DBAA2F56AA190056B1F5 /* Rahbar India.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BFDE15812F5C47A0006D8C6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFDE15822F5C47A0006D8C6E /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,6 +100,8 @@
 			name = "Rahbar India";
 			packageProductDependencies = (
 				BF30DD332F56C1580056B1F5 /* IQKeyboardManagerSwift */,
+				BFDE15F82F5C52E1006D8C6E /* FirebaseCore */,
+				BFDE15FA2F5C52E1006D8C6E /* FirebaseMessaging */,
 			);
 			productName = "Rahbar India";
 			productReference = BF30DBAA2F56AA190056B1F5 /* Rahbar India.app */;
@@ -115,6 +133,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				BF30DD322F56C1580056B1F5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				BFDE15F72F5C52E1006D8C6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = BF30DBAB2F56AA190056B1F5 /* Products */;
@@ -152,8 +171,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rahbar India/Rahbar India.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 666DDAK5UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Rahbar India/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -166,8 +188,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liveapps.Rahbar-India";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahbarindia.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -183,8 +206,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Rahbar India/Rahbar India.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 666DDAK5UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Rahbar India/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -197,8 +223,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.liveapps.Rahbar-India";
+				PRODUCT_BUNDLE_IDENTIFIER = com.rahbarindia.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -360,6 +387,14 @@
 				minimumVersion = 8.0.2;
 			};
 		};
+		BFDE15F72F5C52E1006D8C6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.10.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -367,6 +402,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BF30DD322F56C1580056B1F5 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		BFDE15F82F5C52E1006D8C6E /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFDE15F72F5C52E1006D8C6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		BFDE15FA2F5C52E1006D8C6E /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BFDE15F72F5C52E1006D8C6E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

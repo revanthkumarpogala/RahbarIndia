@@ -61,6 +61,11 @@ struct AppleLoginResponse: Codable {
     let user: User?
 }
 
+struct CommonResponseToken: Decodable {
+    let status: Bool
+    let message: String
+}
+
 struct CommonResponse: Decodable {
     let status: Int
     let message: String
@@ -69,5 +74,11 @@ struct CommonResponse: Decodable {
 struct WebViewTokenResponse: Decodable {
     let status: Int
     let message: String
-    let token: String?
+    let data: TokenDetails?
+}
+
+struct TokenDetails: Decodable {
+    let token: String
+    let expires_at: String
+    let webview_url: String
 }
