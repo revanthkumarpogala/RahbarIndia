@@ -177,7 +177,7 @@
                                                     <constraint firstAttribute="height" constant="46" id="U8p-9x-psn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="namePhonePad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="748" text="Password *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-oH-fKv">
                                                 <rect key="frame" x="24" y="225.99999999999997" width="74.333333333333329" height="17"/>
@@ -190,7 +190,7 @@
                                                     <constraint firstAttribute="height" constant="46" id="qgh-fw-iY2"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="751" text="Password *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FV-Rn-8Dm">
                                                 <rect key="frame" x="24" y="311" width="74.333333333333329" height="17"/>
@@ -203,7 +203,7 @@
                                                     <constraint firstAttribute="height" constant="46" id="LXH-Fd-lHs"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="748" text="Password *" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPG-Sg-z4G">
                                                 <rect key="frame" x="24" y="396" width="74.333333333333329" height="17"/>
@@ -244,20 +244,20 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfk-wg-j2i">
-                                                <rect key="frame" x="24" y="577" width="19" height="19"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfk-wg-j2i">
+                                                <rect key="frame" x="24" y="577" width="30" height="19"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="19" id="Erz-8r-18E"/>
+                                                    <constraint firstAttribute="width" constant="30" id="Erz-8r-18E"/>
                                                     <constraint firstAttribute="height" constant="19" id="RcP-Ll-Typ"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="un-check"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
                                                 <connections>
                                                     <action selector="checkBtnTapped:" destination="D1X-F2-NEr" eventType="touchUpInside" id="noA-JO-Xv2"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNa-J7-IDI">
-                                                <rect key="frame" x="48" y="576.33333333333326" width="42" height="20.333333333333371"/>
+                                                <rect key="frame" x="59" y="576.33333333333326" width="42" height="20.333333333333371"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -339,7 +339,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-OU-3Wk">
-                                                <rect key="frame" x="85" y="569" width="75" height="35"/>
+                                                <rect key="frame" x="96" y="569" width="75" height="35"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 <connections>
@@ -915,7 +915,7 @@
         <image name="pass_hide" width="16" height="15"/>
         <image name="profile image" width="80" height="80"/>
         <image name="settings" width="25" height="25"/>
-        <image name="un-check" width="13" height="13"/>
+        <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

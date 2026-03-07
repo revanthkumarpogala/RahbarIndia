@@ -38,6 +38,7 @@ class RegisterViewController: UIViewController {
     var mobileValidated = false
     var cnfpasswordValidated = false
     var nameValidated = false
+    var checkBtnValidated = false
     var iconClick = true
     
     
@@ -45,6 +46,15 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 15, weight: .regular)
+
+        checkBTN.setImage(UIImage(systemName: "square", withConfiguration: config), for: .normal)
+
+        checkBTN.imageView?.contentMode = .scaleAspectFit
+        checkBTN.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        checkBTN.tintColor = .black
         
         scrollViewwwww.layer.cornerRadius = 15
         scrollViewwwww.layer.shadowColor = UIColor.black.cgColor
@@ -214,13 +224,20 @@ class RegisterViewController: UIViewController {
     
     func updateLoginButtonState() {
         
-        if emailValidated && passwordValidated && cnfpasswordValidated && mobileValidated && nameValidated {
+        if emailValidated && passwordValidated && cnfpasswordValidated && mobileValidated && nameValidated && checkBtnValidated{
             signUpBtbn.isEnabled = true
             signUpBtbn.alpha = 1.0
         } else {
             signUpBtbn.isEnabled = false
             signUpBtbn.alpha = 0.5
         }
+    }
+    
+    func openURL(strURL:String) {
+        guard let url = URL(string: strURL) else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func passwordShowToggle(_ sender: Any) {
@@ -234,15 +251,25 @@ class RegisterViewController: UIViewController {
             }
             iconClick = !iconClick
     }
-    
-    @IBAction func checkBtnTapped(_ sender: Any) {
+    @IBAction func checkBtnTapped(_ sender: UIButton) {
+
+        checkBtnValidated.toggle()
+
+        let config = UIImage.SymbolConfiguration(pointSize: 15, weight: .regular)
+        let imageName = checkBtnValidated ? "checkmark.square.fill" : "square"
+
+        sender.setImage(UIImage(systemName: imageName, withConfiguration: config), for: .normal)
+
+        updateLoginButtonState()
     }
     @IBAction func acceptBtnTapped(_ sender: Any) {
+        self.openURL(strURL: "https://rahbarindia.in/terms-conditions")
     }
     @IBAction func appleBtnTapped(_ sender: Any) {
     }
     
     @IBAction func alreadyBtnTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     @IBAction func signUpBtnTapped(_ sender: Any) {
         let pass = passwordTF.text ?? ""
