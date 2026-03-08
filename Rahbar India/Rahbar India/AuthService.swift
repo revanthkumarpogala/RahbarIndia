@@ -256,14 +256,27 @@ final class AuthService {
         ) { [weak self] result in
             
             switch result {
+                
             case .success(let data):
                 self?.handleAuthResponse(data: data, completion: completion)
                 
             case .failure(let error):
+                
+                if let data = (error as NSError).userInfo["data"] as? Data {
+                    
+                    if let apiError = try? JSONDecoder().decode(ValidationErrorResponse.self, from: data),
+                       let firstError = apiError.errors?.values.first?.first {
+                        
+                        completion(.failure(APIError(message: firstError)))
+                        return
+                    }
+                }
+                
                 completion(.failure(error))
             }
         }
     }
+    
     
     
     // MARK: - Common Auth Response Handler
@@ -273,6 +286,17 @@ final class AuthService {
         completion: @escaping (Result<String, Error>) -> Void
     ) {
         do {
+            
+            // 🔹 First check validation errors
+            if let validation = try? JSONDecoder().decode(ValidationErrorResponse.self, from: data),
+               validation.status == 0 {
+
+                let message = validation.errors?.values.first?.first ?? validation.message
+                completion(.failure(AuthError.apiError(message)))
+                return
+            }
+            
+            // 🔹 Then decode normal login response
             let response = try JSONDecoder().decode(LoginResponse.self, from: data)
             
             guard response.status == 1 else {
@@ -286,7 +310,7 @@ final class AuthService {
                 return
             }
             
-            // Save Session
+            // Save session
             UserSessionManager.shared.saveSession(user: user, token: token)
             
             completion(.success(response.message))

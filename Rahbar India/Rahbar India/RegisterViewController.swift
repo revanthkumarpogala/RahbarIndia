@@ -303,6 +303,7 @@ class RegisterViewController: UIViewController {
             case .success(let token):
                 DispatchQueue.main.async {
                     let vc: WebViewController = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+                    UserSessionManager.shared.saveWebToken(token: token)
                     vc.token = token
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

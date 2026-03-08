@@ -82,3 +82,19 @@ struct TokenDetails: Decodable {
     let expires_at: String
     let webview_url: String
 }
+
+struct APIError: Error {
+    let message: String
+}
+
+extension APIError: LocalizedError {
+    var errorDescription: String? {
+        return message
+    }
+}
+
+struct ValidationErrorResponse: Decodable {
+    let status: Int
+    let message: String
+    let errors: [String: [String]]?
+}
