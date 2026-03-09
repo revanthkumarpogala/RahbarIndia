@@ -317,12 +317,13 @@ class RegisterViewController: UIViewController {
     func callAppleLogin(appleID: String,
                         email: String,
                         name: String,
-                        identityToken: String) {
+                        identityToken: String,
+                        authCode: String) {
         
         AuthService.shared.loginWithApple(appleID: appleID,
                        email: email,
                        name: name,
-                       identityToken: identityToken) { result in
+                                          identityToken: identityToken, authCode: authCode) { result in
             
             switch result {
             case .success(let message):
@@ -453,7 +454,7 @@ extension RegisterViewController: ASAuthorizationControllerDelegate {
         print("Email:", email)
         print("Name:", firstName, lastName)
         DispatchQueue.global().async {
-            self.callAppleLogin(appleID: email, email: email, name: firstName + lastName, identityToken: idToken)
+            self.callAppleLogin(appleID: email, email: email, name: firstName + lastName, identityToken: idToken, authCode: authCode)
         }
     }
 

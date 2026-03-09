@@ -175,6 +175,7 @@ final class AuthService {
         email: String,
         name: String,
         identityToken: String,
+        authCode: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
         
@@ -182,7 +183,8 @@ final class AuthService {
             "apple_id": appleID,
             "email": email,
             "name": name,
-            "identity_token": identityToken
+            "identity_token": identityToken,
+            "authorization_code": authCode
         ]
         
         APIManager.shared.postJSONRequest(
