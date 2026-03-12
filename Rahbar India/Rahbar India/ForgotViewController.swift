@@ -70,13 +70,13 @@ class ForgotViewController: UIViewController {
         submitButton.alpha = 0.5
         
         
-        let fullText = "Hey there!\nWelcome to Rahbhar India"
+        let fullText = "Hey there!\nWelcome to Rahbar India"
         let attributedString = NSMutableAttributedString(string: fullText)
         
-        // Find the range of "Rahbhar India" to color it red
+        // Find the range of "Rahbar India" to color it red
         let font = UIFont(name: "Inter-Bold", size: 20)!
         attributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: fullText.count))
-        let range = (fullText as NSString).range(of: "Rahbhar India")
+        let range = (fullText as NSString).range(of: "Rahbar India")
         attributedString.addAttribute(.foregroundColor, value: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0), range: range)
         
         welcomeLabel.attributedText = attributedString

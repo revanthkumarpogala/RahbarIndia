@@ -160,8 +160,8 @@
                                                     <constraint firstAttribute="width" constant="44" id="XQI-E2-iwc"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Welcome to Rahbhar India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsO-dY-d6R">
-                                                <rect key="frame" x="24" y="86.999999999999972" width="303.33333333333331" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Welcome to Rahbar India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsO-dY-d6R">
+                                                <rect key="frame" x="24" y="86.999999999999972" width="288.33333333333331" height="30"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -504,7 +504,7 @@
                                             <constraint firstAttribute="width" constant="44" id="w-logo"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Welcome to Rahbhar India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8a-9K-j3k">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Welcome to Rahbar India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8a-9K-j3k">
                                         <rect key="frame" x="24" y="92.000000000000028" width="313" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <nil key="textColor"/>
@@ -739,8 +739,8 @@
                                             <constraint firstAttribute="width" constant="44" id="bvF-TQ-qao"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Welcome to Rahbhar India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoa-Hq-IfD">
-                                        <rect key="frame" x="24" y="92" width="303.33333333333331" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Welcome to Rahbar India" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoa-Hq-IfD">
+                                        <rect key="frame" x="24" y="92" width="288.33333333333331" height="30"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -858,7 +858,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ju7-Vr-8kP">
-                                <rect key="frame" x="333" y="85" width="36" height="36"/>
+                                <rect key="frame" x="333" y="70" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="FMX-6C-B1h"/>
                                     <constraint firstAttribute="height" constant="36" id="tS8-OY-IRx"/>
@@ -876,7 +876,7 @@
                             <constraint firstAttribute="trailing" secondItem="aKM-4U-VXf" secondAttribute="trailing" id="Ch6-Th-5uF"/>
                             <constraint firstAttribute="trailing" secondItem="ju7-Vr-8kP" secondAttribute="trailing" constant="24" id="Jnh-HI-fhz"/>
                             <constraint firstItem="aKM-4U-VXf" firstAttribute="top" secondItem="d7c-xG-Tu1" secondAttribute="top" id="KKg-xJ-IKs"/>
-                            <constraint firstItem="ju7-Vr-8kP" firstAttribute="top" secondItem="d7c-xG-Tu1" secondAttribute="top" constant="85" id="Po2-QB-pQE"/>
+                            <constraint firstItem="ju7-Vr-8kP" firstAttribute="top" secondItem="d7c-xG-Tu1" secondAttribute="top" constant="70" id="Po2-QB-pQE"/>
                             <constraint firstAttribute="bottom" secondItem="aKM-4U-VXf" secondAttribute="bottom" id="thG-Km-niD"/>
                             <constraint firstItem="aKM-4U-VXf" firstAttribute="leading" secondItem="d7c-xG-Tu1" secondAttribute="leading" id="wcm-QC-nzo"/>
                         </constraints>

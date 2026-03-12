@@ -178,6 +178,9 @@
 				DEVELOPMENT_TEAM = 666DDAK5UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Rahbar India/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to upload photos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to save photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs photo library access to upload images.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -213,6 +216,9 @@
 				DEVELOPMENT_TEAM = 666DDAK5UX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Rahbar India/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app needs camera access to upload photos.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs permission to save photos.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs photo library access to upload images.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

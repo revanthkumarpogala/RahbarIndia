@@ -119,16 +119,16 @@ class RegisterViewController: UIViewController {
                                       range: cnfpasswordrange)
         cnfPassLabel.attributedText = cnfpasswordattributedString
         
-        // 1. Set the specific red color for "Rahbhar India"
-        let fullText = "Get started\nfree at Rahbhar India"
+        // 1. Set the specific red color for "Rahbar India"
+        let fullText = "Get started\nfree at Rahbar India"
         let attributedString = NSMutableAttributedString(string: fullText)
 
         // Set Inter-Bold font size 20 for entire text
         let font = UIFont(name: "Inter-Bold", size: 20)!
         attributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: fullText.count))
 
-        // Find the range of "Rahbhar India" to color it red
-        let range = (fullText as NSString).range(of: "Rahbhar India")
+        // Find the range of "Rahbar India" to color it red
+        let range = (fullText as NSString).range(of: "Rahbar India")
         attributedString.addAttribute(.foregroundColor,
                                       value: UIColor(red: 0.8, green: 0.2, blue: 0.2, alpha: 1.0),
                                       range: range)
@@ -396,11 +396,11 @@ extension RegisterViewController : UITextFieldDelegate {
             
             
             if textField == emailTF {
-                if !Validations().isValidEmail(email: emailTF.text!) {
+                if !Validations().isValidEmail(email: emailTF.text ?? "") {
                     UIUtilites().showAlert(title: "Error", message: "Please enter valid email", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
                 }
             } else if textField == passwordTF {
-                if !Validations().validatePassword(passwordTF.text!) {
+                if !Validations().validatePassword(passwordTF.text ?? "") {
                     UIUtilites().showAlert(title: "Error", message: "Password should be 6-15 characters long", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
                 }
             } else if textField == cnfPassTF {
@@ -419,11 +419,11 @@ extension RegisterViewController : UITextFieldDelegate {
                                            okAction: UIAlertAction(title: "Okay", style: .default))
                 }
             } else if textField == mobileTF {
-                if !Validations().isValidMobile(num: mobileTF.text!) {
+                if !Validations().isValidMobile(num: mobileTF.text ?? "") {
                     UIUtilites().showAlert(title: "Error", message: "Invalid mobile number", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
                 }
             } else if textField == nameTF {
-                if !Validations().isNameValid(name: nameTF.text!) {
+                if !Validations().isNameValid(name: nameTF.text ?? "") {
                     UIUtilites().showAlert(title: "Error", message: "Name should be min 3 characters", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
                 }
             }
@@ -441,21 +441,37 @@ extension RegisterViewController: ASAuthorizationControllerDelegate {
 
         let userId = credential.user
 
+        if let email = credential.email {
+            UserDefaults.standard.set(email, forKey: "apple_email")
+        }
+        if let firstName = credential.fullName?.givenName {
+            UserDefaults.standard.set(firstName, forKey: "apple_first_name")
+        }
+
+        if let lastName = credential.fullName?.familyName {
+            UserDefaults.standard.set(lastName, forKey: "apple_last_name")
+        }
         let idToken = String(data: credential.identityToken ?? Data(), encoding: .utf8) ?? ""
         let authCode = String(data: credential.authorizationCode ?? Data(), encoding: .utf8) ?? ""
 
-        let email = credential.email ?? ""
-        let firstName = credential.fullName?.givenName ?? ""
-        let lastName = credential.fullName?.familyName ?? ""
-
+        let email = credential.email ?? UserDefaults.standard.string(forKey: "apple_email") ?? ""
+        let firstName = credential.fullName?.givenName ?? UserDefaults.standard.string(forKey: "apple_first_name") ?? ""
+        let lastName = credential.fullName?.familyName ?? UserDefaults.standard.string(forKey: "apple_last_name") ?? ""
+        
         print("UserID:", userId)
         print("Token:", idToken)
         print("Code:", authCode)
         print("Email:", email)
         print("Name:", firstName, lastName)
-        DispatchQueue.global().async {
-            self.callAppleLogin(appleID: email, email: email, name: firstName + lastName, identityToken: idToken, authCode: authCode)
-        }
+        UserDefaults.standard.set(userId, forKey: "apple_user_id")
+
+        self.callAppleLogin(
+            appleID: userId,
+            email: email,
+            name: firstName + " " + lastName,
+            identityToken: idToken,
+            authCode: authCode
+        )
     }
 
     func authorizationController(controller: ASAuthorizationController,
