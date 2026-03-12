@@ -234,5 +234,20 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
 extension SettingsViewController: SettingsSecondCellDelegate {
     func didSelectCell(index: Int) {
         print(index)
+        
+        let xLink = "https://x.com/IndianRahbar"
+        let linkedINLink = "https://www.linkedin.com/in/rahbar-indian-4b28543b6?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+        let fbLink = "https://www.facebook.com/profile.php?id=61583771440277"
+        let instaLink = "https://www.instagram.com/rahbarindia"
+        
+        if index == 0 {
+            self.openURL(strURL: fbLink)
+        } else if index == 1 {
+            self.openURL(strURL: instaLink)
+        } else if index == 2 {
+            self.openURL(strURL: linkedINLink)
+        } else {
+            self.openURL(strURL: xLink)
+        }
     }
 }
