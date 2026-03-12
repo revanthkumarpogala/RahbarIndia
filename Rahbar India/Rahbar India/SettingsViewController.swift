@@ -73,22 +73,23 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 7
+            return 6
         } else {
             return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if indexPath.section == 0  && indexPath.row == 0{
+//            let cell = tableView.dequeueReusableCell(
+//                withIdentifier: "SettingsFirstCell",
+//                for: indexPath
+//            ) as! SettingsFirstCell
+//            cell.selectionStyle = .none
+//            cell.setHedar(title: "My Profile")
+//            return cell
+//        } else
         if indexPath.section == 0  && indexPath.row == 0{
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: "SettingsFirstCell",
-                for: indexPath
-            ) as! SettingsFirstCell
-            cell.selectionStyle = .none
-            cell.setHedar(title: "My Profile")
-            return cell
-        } else if indexPath.section == 0  && indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "SettingsFirstCell",
                 for: indexPath
@@ -96,7 +97,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.setHedar(title: "About us")
             return cell
-        } else  if indexPath.section == 0  && indexPath.row == 2{
+        } else  if indexPath.section == 0  && indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "SettingsFirstCell",
                 for: indexPath
@@ -104,7 +105,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.setHedar(title: "Privacy Policy")
             return cell
-        } else if indexPath.section == 0  && indexPath.row == 3{
+        } else if indexPath.section == 0  && indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "SettingsFirstCell",
                 for: indexPath
@@ -112,7 +113,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.setHedar(title: "Refund Policy")
             return cell
-        }else if indexPath.section == 0  && indexPath.row == 4{
+        }else if indexPath.section == 0  && indexPath.row == 3{
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "SettingsFirstCell",
                 for: indexPath
@@ -120,7 +121,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.setHedar(title: "Terms & Conditions")
             return cell
-        }else if indexPath.section == 0  && indexPath.row == 5{
+        }else if indexPath.section == 0  && indexPath.row == 4{
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "SettingsFirstCell",
                 for: indexPath
@@ -128,7 +129,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
             cell.setHedar(title: "Logout")
             return cell
-        }else if indexPath.section == 0  && indexPath.row == 6{
+        }else if indexPath.section == 0  && indexPath.row == 5{
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: "SettingsFirstCell",
                 for: indexPath
@@ -150,24 +151,25 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var linkToOpen = ""
-        if indexPath.row == 0  && indexPath.section == 0{
-//            linkToOpen = "https://rahbarindia.in/profile"
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileWebController") ?? UIViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
-            
-        } else if indexPath.row == 1 && indexPath.section == 0{
+//        if indexPath.row == 0  && indexPath.section == 0{
+////            linkToOpen = "https://rahbarindia.in/profile"
+//            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileWebController") ?? UIViewController()
+//            vc.modalPresentationStyle = .fullScreen
+//            self.present(vc, animated: true)
+//            
+//        } else
+        if indexPath.row == 0 && indexPath.section == 0{
             linkToOpen = "https://rahbarindia.in/about-us"
-        } else if indexPath.row == 2 && indexPath.section == 0{
+        } else if indexPath.row == 1 && indexPath.section == 0{
             linkToOpen = "https://rahbarindia.in/privacy-policy"
-        } else if indexPath.row == 3 && indexPath.section == 0{
+        } else if indexPath.row == 2 && indexPath.section == 0{
             linkToOpen = "https://rahbarindia.in/refund-policy"
-        } else if indexPath.row == 4 && indexPath.section == 0{
+        } else if indexPath.row == 3 && indexPath.section == 0{
             linkToOpen = "https://rahbarindia.in/terms-conditions"
-        } else if indexPath.row == 5 && indexPath.section == 0{
+        } else if indexPath.row == 4 && indexPath.section == 0{
             // logout
-            logout()
-        } else if indexPath.row == 6 && indexPath.section == 0{
+            logoutAccountWithPopup()
+        } else if indexPath.row == 5 && indexPath.section == 0{
             // delete account
             deleteAccountWithPopup()
         }
@@ -205,6 +207,16 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
                 UIUtilites().showAlert(title: "Error...!", message: "Unable to logout. Please try again.", vc: self, okAction: UIAlertAction(title: "Okay", style: .default))
             }
         }
+    }
+    func logoutAccountWithPopup() {
+        let title = "Logout"
+        let message = "Are you sure you want to log out of your account?"
+        let cancel = UIAlertAction(title: "Cancel", style: .default)
+        let delete = UIAlertAction(title: "Logout", style: .destructive, handler: { [weak self] _ in
+            self?.logout()
+        })
+        
+        UIUtilites().showAlert(title: title, message: message, vc: self, okAction: cancel, cancelAction: delete)
     }
     func deleteAccountWithPopup() {
         let title = "Delete Account"

@@ -38,7 +38,7 @@ struct User: Codable {
     let id: Int
     let name: String
     let email: String
-    let mobile: String
+    let mobile: String?
     let profileImage: String
     
     enum CodingKeys: String, CodingKey {
