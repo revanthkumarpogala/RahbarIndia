@@ -213,7 +213,7 @@ class ViewController: UIViewController {
             switch result {
             case .success(let message):
                 print("FCM Updated:", message)
-                self.openWebView()
+//                self.openWebView()
             case .failure(let error):
                 print("Failed:", error.localizedDescription)
             }
@@ -290,7 +290,14 @@ class ViewController: UIViewController {
                 self.passwordTextField.text = ""
                 let fcmToken = UserDefaults.standard.string(forKey: "fcm_token") ?? ""
                 let userID = "\(UserSessionManager.shared.getUser()?.id ?? 0)"
-                self.updateFCMToken(token: fcmToken, userId: userID)
+
+                // Open webview immediately
+                self.openWebView()
+
+                // Update FCM in background
+                DispatchQueue.global().async {
+                    self.updateFCMToken(token: fcmToken, userId: userID)
+                }
               
                 
             case .failure(let error):
@@ -319,7 +326,12 @@ class ViewController: UIViewController {
                 
                 let fcmToken = UserDefaults.standard.string(forKey: "fcm_token") ?? ""
                 let userID = "\(UserSessionManager.shared.getUser()?.id ?? 0)"
-                self.updateFCMToken(token: fcmToken, userId: userID)
+//                self.updateFCMToken(token: fcmToken, userId: userID)
+                self.openWebView()
+
+                DispatchQueue.global().async {
+                    self.updateFCMToken(token: fcmToken, userId: userID)
+                }
                 
                 
             case .failure(let error):

@@ -391,6 +391,11 @@ class RegisterViewController: UIViewController {
 }
 
 extension RegisterViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text?.count ?? 0 > 0 {
             
