@@ -194,36 +194,6 @@
             endingLineNumber = "195"
             landmarkName = "loginWithApple(appleID:email:name:identityToken:authCode:completion:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C2A19FF6-53F8-4295-A976-DAA65E770C5A - a911285a518d3a8f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in Rahbar_India.AuthService.loginWithApple(appleID: Swift.String, email: Swift.String, name: Swift.String, identityToken: Swift.String, authCode: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Rahbar India.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/revanthkumar/Desktop/Rahbar/Rahbar%20India/Rahbar%20India/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-               <Location
-                  uuid = "C2A19FF6-53F8-4295-A976-DAA65E770C5A - a911285a518d3a8f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Foundation.Data, Swift.Error&gt;) -&gt; () in Rahbar_India.AuthService.loginWithApple(appleID: Swift.String, email: Swift.String, name: Swift.String, identityToken: Swift.String, authCode: Swift.String, completion: (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Rahbar India.debug.dylib"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/revanthkumar/Desktop/Rahbar/Rahbar%20India/Rahbar%20India/AuthService.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "197"
-                  endingLineNumber = "197">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -10,8 +10,13 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         webView.navigationDelegate = self
+
+        if #available(iOS 11.0, *) {
+            webView.scrollView.contentInsetAdjustmentBehavior = .never
+        }
+
+        webView.scrollView.bounces = false
 
         token = UserSessionManager.shared.getWebToken()
         loadWebPage()
