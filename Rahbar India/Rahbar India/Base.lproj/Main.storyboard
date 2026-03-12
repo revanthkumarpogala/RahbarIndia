@@ -890,6 +890,56 @@
             </objects>
             <point key="canvasLocation" x="-188.54961832061068" y="-34.507042253521128"/>
         </scene>
+        <!--Profile Web Controller-->
+        <scene sceneID="xbW-7B-flJ">
+            <objects>
+                <viewController storyboardIdentifier="ProfileWebController" id="6b9-0g-xmH" customClass="ProfileWebController" customModule="Rahbar_India" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aN4-fR-QD5">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4S-eQ-ltY">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1IU-ut-ZfX">
+                                <rect key="frame" x="333" y="70" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="WNe-2A-yCP"/>
+                                    <constraint firstAttribute="height" constant="36" id="fjB-3k-xqD"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="close"/>
+                                <connections>
+                                    <action selector="closeBtnTapped:" destination="6b9-0g-xmH" eventType="touchUpInside" id="wJA-K1-PlX"/>
+                                    <action selector="onSettingsTapped:" destination="pN4-9R-NCI" eventType="touchUpInside" id="rSa-pf-08C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gx2-lL-0Rb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1IU-ut-ZfX" secondAttribute="trailing" constant="24" id="Aoz-i6-qZJ"/>
+                            <constraint firstAttribute="bottom" secondItem="d4S-eQ-ltY" secondAttribute="bottom" id="IGm-Gy-6Bn"/>
+                            <constraint firstAttribute="trailing" secondItem="d4S-eQ-ltY" secondAttribute="trailing" id="L30-7b-BHH"/>
+                            <constraint firstItem="d4S-eQ-ltY" firstAttribute="top" secondItem="aN4-fR-QD5" secondAttribute="top" id="Xt0-So-Ftq"/>
+                            <constraint firstItem="d4S-eQ-ltY" firstAttribute="leading" secondItem="aN4-fR-QD5" secondAttribute="leading" id="cK7-wI-A4Z"/>
+                            <constraint firstItem="1IU-ut-ZfX" firstAttribute="top" secondItem="aN4-fR-QD5" secondAttribute="top" constant="70" id="s4E-GR-AfG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="closeBtn" destination="1IU-ut-ZfX" id="JUT-Bp-7PW"/>
+                        <outlet property="webView" destination="d4S-eQ-ltY" id="WTo-Ur-qVQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9dv-2e-221" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="544" y="-486"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="zkz-sv-Scd">
             <objects>

@@ -151,7 +151,11 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var linkToOpen = ""
         if indexPath.row == 0  && indexPath.section == 0{
-            linkToOpen = "https://rahbarindia.in/profile"
+//            linkToOpen = "https://rahbarindia.in/profile"
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "ProfileWebController") ?? UIViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+            
         } else if indexPath.row == 1 && indexPath.section == 0{
             linkToOpen = "https://rahbarindia.in/about-us"
         } else if indexPath.row == 2 && indexPath.section == 0{
