@@ -108,9 +108,20 @@ class ViewController: UIViewController {
         
         
         // 2. Setup Apple Button Border
-        appleButton.layer.borderWidth = 1
-        appleButton.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+        // Apple login button style (white background)
+
+        appleButton.backgroundColor = .white
         appleButton.layer.cornerRadius = 12
+        appleButton.layer.borderWidth = 1
+        appleButton.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.4).cgColor
+
+        // Apple icon
+        appleButton.setImage(UIImage(systemName: "applelogo"), for: .normal)
+        appleButton.tintColor = .black
+
+        // spacing between icon and text
+        appleButton.semanticContentAttribute = .forceLeftToRight
+        appleButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
         
         loginButton.isEnabled = false
         loginButton.alpha = 0.5
@@ -140,7 +151,7 @@ class ViewController: UIViewController {
 
         loginButton.setButtonDefaults(title: "Login", fontName: "Inter-Medium", fontSize: 16, color: .white)
         
-        appleButton.setButtonDefaults(title: "Continue with Apple", fontName: "Inter-SemiBold", fontSize: 14, color: UIColor.hexStringToUIColor(hex: "1A1C1E"))
+        appleButton.setButtonDefaults(title: "Continue with Apple", fontName: "Inter-SemiBold", fontSize: 16, color: UIColor.hexStringToUIColor(hex: "1A1C1E"))
                                       
         signUpBtn.setButtonDefaults(
             title: "Signup",

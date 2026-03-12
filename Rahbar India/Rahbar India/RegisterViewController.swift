@@ -149,9 +149,21 @@ class RegisterViewController: UIViewController {
         nameTF.delegate = self
         
         
-        appleBtn.layer.borderWidth = 1
-        appleBtn.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.3).cgColor
+        // 2. Setup Apple Button Border
+        // Apple login button style (white background)
+
+        appleBtn.backgroundColor = .white
         appleBtn.layer.cornerRadius = 12
+        appleBtn.layer.borderWidth = 1
+        appleBtn.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.4).cgColor
+
+        // Apple icon
+        appleBtn.setImage(UIImage(systemName: "applelogo"), for: .normal)
+        appleBtn.tintColor = .black
+
+        // spacing between icon and text
+        appleBtn.semanticContentAttribute = .forceLeftToRight
+        appleBtn.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
         
         signUpBtbn.isEnabled = false
         signUpBtbn.alpha = 0.5
@@ -183,7 +195,7 @@ class RegisterViewController: UIViewController {
         
         signUpBtbn.setButtonDefaults(title: "Signup", fontName: "Inter-Medium", fontSize: 16, color: .white)
         
-        appleBtn.setButtonDefaults(title: "Continue with Apple", fontName: "Inter-SemiBold", fontSize: 14, color: UIColor.hexStringToUIColor(hex: "1A1C1E"))
+        appleBtn.setButtonDefaults(title: "Continue with Apple", fontName: "Inter-SemiBold", fontSize: 16, color: UIColor.hexStringToUIColor(hex: "1A1C1E"))
                                       
         acceptBtn.setButtonDefaults(
             title: "Terms & Conditions",
