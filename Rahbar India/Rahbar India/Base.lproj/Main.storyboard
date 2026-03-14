@@ -19,7 +19,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMS-Bv-g57">
                                 <rect key="frame" x="0.0" y="0.0" width="373" height="852"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile image" translatesAutoresizingMaskIntoConstraints="NO" id="4RH-3l-uub">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4RH-3l-uub">
                                         <rect key="frame" x="146.66666666666666" y="179" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="0M1-Bx-hGs"/>
@@ -339,7 +339,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0Q-OU-3Wk">
-                                                <rect key="frame" x="96" y="569" width="75" height="35"/>
+                                                <rect key="frame" x="91" y="569" width="75" height="35"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 <connections>
@@ -356,7 +356,7 @@
                                             <constraint firstItem="Qe8-2k-WyT" firstAttribute="top" secondItem="UsO-dY-d6R" secondAttribute="bottom" constant="24" id="6Ac-eN-jaG"/>
                                             <constraint firstItem="3SY-QY-zjK" firstAttribute="leading" secondItem="0FV-Rn-8Dm" secondAttribute="leading" id="7AR-0v-ApG"/>
                                             <constraint firstItem="aq8-Tq-zfp" firstAttribute="leading" secondItem="ACJ-In-w1Q" secondAttribute="leading" constant="24" id="9ak-ac-C7E"/>
-                                            <constraint firstItem="B0Q-OU-3Wk" firstAttribute="leading" secondItem="oNa-J7-IDI" secondAttribute="trailing" constant="-5" id="9nD-6h-vcQ"/>
+                                            <constraint firstItem="B0Q-OU-3Wk" firstAttribute="leading" secondItem="oNa-J7-IDI" secondAttribute="trailing" constant="-10" id="9nD-6h-vcQ"/>
                                             <constraint firstItem="BBM-RI-EwD" firstAttribute="top" secondItem="Qe8-2k-WyT" secondAttribute="bottom" constant="5" id="AC9-LR-Dup"/>
                                             <constraint firstItem="sFz-oH-fKv" firstAttribute="leading" secondItem="BBM-RI-EwD" secondAttribute="leading" id="AV5-Ys-h23"/>
                                             <constraint firstItem="Vsb-8f-meS" firstAttribute="top" secondItem="Unk-K0-IYl" secondAttribute="bottom" constant="17" id="BiT-gq-vDS"/>
@@ -585,7 +585,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hl9-k0-scf">
-                                        <rect key="frame" x="61" y="440" width="75" height="35"/>
+                                        <rect key="frame" x="56" y="440" width="75" height="35"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
@@ -667,7 +667,7 @@
                                     <constraint firstAttribute="bottom" secondItem="A-btn" secondAttribute="bottom" constant="24" id="hhu-NJ-btN"/>
                                     <constraint firstItem="1xS-f2-8QI" firstAttribute="top" secondItem="AQx-0L-Iho" secondAttribute="bottom" constant="24" id="iih-5F-30Q"/>
                                     <constraint firstItem="e9y-xG-wvF" firstAttribute="centerX" secondItem="mzf-2p-L6p" secondAttribute="centerX" id="mQM-DS-f43"/>
-                                    <constraint firstItem="Hl9-k0-scf" firstAttribute="leading" secondItem="AQx-0L-Iho" secondAttribute="trailing" constant="-5" id="oGU-eI-HvF"/>
+                                    <constraint firstItem="Hl9-k0-scf" firstAttribute="leading" secondItem="AQx-0L-Iho" secondAttribute="trailing" constant="-10" id="oGU-eI-HvF"/>
                                     <constraint firstItem="I4a-8P-uXW" firstAttribute="top" secondItem="mzf-2p-L6p" secondAttribute="top" constant="24" id="v1"/>
                                     <constraint firstItem="H8a-9K-j3k" firstAttribute="top" secondItem="I4a-8P-uXW" secondAttribute="bottom" constant="24" id="v2"/>
                                     <constraint firstItem="e-label" firstAttribute="top" secondItem="H8a-9K-j3k" secondAttribute="bottom" constant="24" id="v3"/>
@@ -982,7 +982,6 @@
         <image name="back" width="24" height="24"/>
         <image name="close" width="16" height="16"/>
         <image name="pass_hide" width="16" height="15"/>
-        <image name="profile image" width="80" height="80"/>
         <image name="settings" width="25" height="25"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">

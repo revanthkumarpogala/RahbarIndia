@@ -133,7 +133,7 @@ class ViewController: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
-        Utilities().setInterSemiBold(label: signUpLabel, size: 14)
+        Utilities().setInterMedium(label: signUpLabel, size: 14)
         signUpLabel.text = "Don’t have an account?"
         signUpLabel.textColor = UIColor.hexStringToUIColor(hex: "000000")
         
@@ -306,8 +306,11 @@ class ViewController: UIViewController {
                 self.openWebView()
 
                 // Update FCM in background
-                DispatchQueue.global().async {
+                
+                if !fcmToken.isEmpty {
                     self.updateFCMToken(token: fcmToken, userId: userID)
+                } else {
+                    print("FCM token not available yet")
                 }
               
                 
@@ -340,8 +343,11 @@ class ViewController: UIViewController {
 //                self.updateFCMToken(token: fcmToken, userId: userID)
                 self.openWebView()
 
-                DispatchQueue.global().async {
+                
+                if !fcmToken.isEmpty {
                     self.updateFCMToken(token: fcmToken, userId: userID)
+                } else {
+                    print("FCM token not available yet")
                 }
                 
                 

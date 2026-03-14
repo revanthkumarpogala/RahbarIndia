@@ -76,16 +76,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: MessagingDelegate {
 
+//    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+//
+//        print("FCM Token:", fcmToken ?? "")
+//        
+//        // Send this token to your backend server
+//        
+//        guard let token = fcmToken else { return }
+//        // Save token locally
+//           UserDefaults.standard.set(token, forKey: "fcm_token")
+//           UserDefaults.standard.synchronize()
+//    }
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
 
-        print("FCM Token:", fcmToken ?? "")
-        
-        // Send this token to your backend server
-        
         guard let token = fcmToken else { return }
-        // Save token locally
-           UserDefaults.standard.set(token, forKey: "fcm_token")
-           UserDefaults.standard.synchronize()
+
+        print("FCM Token:", token)
+
+        UserDefaults.standard.set(token, forKey: "fcm_token")
+
+        // If user already logged in
+        if let user = UserSessionManager.shared.getUser() {
+
+            let userId = "\(user.id)"
+
+            AuthService.shared.updateFCMToken(
+                fcmToken: token,
+                userId: userId
+            ) { result in
+                print("Auto FCM update:", result)
+            }
+        }
     }
 }
 

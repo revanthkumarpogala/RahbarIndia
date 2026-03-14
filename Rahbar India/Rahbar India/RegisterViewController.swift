@@ -182,7 +182,7 @@ class RegisterViewController: UIViewController {
         alreadyLabel.text = "Already have a Account?"
         alreadyLabel.textColor = UIColor.hexStringToUIColor(hex: "000000")
         
-        Utilities().setInterSemiBold(label: acceptLbel, size: 14)
+        Utilities().setInterMedium(label: acceptLbel, size: 14)
         acceptLbel.text = "I accept the"
         acceptLbel.textColor = UIColor.hexStringToUIColor(hex: "000000")
         
@@ -300,10 +300,10 @@ class RegisterViewController: UIViewController {
             switch result {
             case .success(let message):
                 print("FCM Updated:", message)
-                self.openWebView()
             case .failure(let error):
                 print("Failed:", error.localizedDescription)
             }
+            self.openWebView()
         }
         
     }
@@ -343,7 +343,11 @@ class RegisterViewController: UIViewController {
                 // Navigate to Home
                 let fcmToken = UserDefaults.standard.string(forKey: "fcm_token") ?? ""
                 let userID = "\(UserSessionManager.shared.getUser()?.id ?? 0)"
-                self.updateFCMToken(token: fcmToken, userId: userID)
+                if !fcmToken.isEmpty {
+                    self.updateFCMToken(token: fcmToken, userId: userID)
+                } else {
+                    self.openWebView()
+                }
                 
                 
             case .failure(let error):
@@ -393,7 +397,12 @@ class RegisterViewController: UIViewController {
             
                 let fcmToken = UserDefaults.standard.string(forKey: "fcm_token") ?? ""
                 let userID = "\(UserSessionManager.shared.getUser()?.id ?? 0)"
-                self.updateFCMToken(token: fcmToken, userId: userID)
+                if !fcmToken.isEmpty {
+                    self.updateFCMToken(token: fcmToken, userId: userID)
+                } else {
+                    print("FCM token not available yet")
+                    self.openWebView()
+                }
             case .failure(let error):
                 print("Registration Failed:", error.localizedDescription)
                 UIUtilites().showAlert(title: "Error...!", message: error.localizedDescription, vc: self, okAction: UIAlertAction(title: "Okay", style: .default))

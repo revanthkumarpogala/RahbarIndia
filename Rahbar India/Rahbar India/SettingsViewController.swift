@@ -46,7 +46,36 @@ class SettingsViewController: UIViewController {
         Utilities().setMulishSemiBold(label: bottomLabel, size: 14)
         bottomLabel.textColor = .white
         bottomLabel.text = "Copyright @RahbarIndia All Rights Reserved"
-        
+     
+        setImage()
+    }
+    
+    
+    func setImage() {
+        let user = UserSessionManager.shared.getUser()
+        if let profileImageName = user?.profileImage, !profileImageName.isEmpty {
+
+            let baseURL = "https://rahbarindia.in/uploads/profile_images/"
+            let fullURL = baseURL + profileImageName
+
+            if let url = URL(string: fullURL) {
+                DispatchQueue.global().async {
+                    if let data = try? Data(contentsOf: url),
+                       let image = UIImage(data: data) {
+
+                        DispatchQueue.main.async {
+                            self.profileIV.image = image
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.profileIV.image = UIImage(named: "profile image")
+                        }
+                    }
+                }
+            }
+        } else {
+            profileIV.image = UIImage(named: "profile image")
+        }
     }
     
     @IBAction func closeBtnTapped(_ sender: Any) {

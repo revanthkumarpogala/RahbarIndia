@@ -14,8 +14,8 @@
             filePath = "Rahbar India/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "315"
-            endingLineNumber = "315"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
             landmarkName = "callLoginAPI(email:password:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "Rahbar India/SettingsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,10 +142,10 @@
             filePath = "Rahbar India/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "497"
-            endingLineNumber = "497"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "506"
+            endingLineNumber = "506"
+            landmarkName = "RegisterViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,9 +158,9 @@
             filePath = "Rahbar India/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "signUpBtnTapped(_:)"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
+            landmarkName = "callAppleLogin(appleID:email:name:identityToken:authCode:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -174,8 +174,8 @@
             filePath = "Rahbar India/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "326"
-            endingLineNumber = "326"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "callAppleLogin(appleID:email:name:identityToken:authCode:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -225,6 +225,22 @@
             startingLineNumber = "303"
             endingLineNumber = "303"
             landmarkName = "handleAuthResponse(data:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4D9BEAE0-24F1-4D69-93BE-146C8C3479AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rahbar India/SettingsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "setImage1()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
