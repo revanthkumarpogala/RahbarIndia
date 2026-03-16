@@ -331,7 +331,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihO-4a-k7Z">
-                                                <rect key="frame" x="60.333333333333329" y="685.66666666666663" width="74.999999999999986" height="35"/>
+                                                <rect key="frame" x="55.333333333333329" y="685.66666666666663" width="74.999999999999986" height="35"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                 <connections>
@@ -366,7 +366,7 @@
                                             <constraint firstAttribute="trailing" secondItem="BBM-RI-EwD" secondAttribute="trailing" constant="24" id="JHF-ws-u3P"/>
                                             <constraint firstItem="qCh-fQ-Atv" firstAttribute="centerY" secondItem="3aY-IU-4tR" secondAttribute="centerY" id="MYo-Pn-2fJ"/>
                                             <constraint firstItem="BCj-77-5Nd" firstAttribute="leading" secondItem="3aY-IU-4tR" secondAttribute="leading" constant="20" id="MaB-ay-b5v"/>
-                                            <constraint firstItem="ihO-4a-k7Z" firstAttribute="leading" secondItem="4hS-dS-YCc" secondAttribute="trailing" constant="-5" id="Q35-9J-9w7"/>
+                                            <constraint firstItem="ihO-4a-k7Z" firstAttribute="leading" secondItem="4hS-dS-YCc" secondAttribute="trailing" constant="-10" id="Q35-9J-9w7"/>
                                             <constraint firstAttribute="trailing" secondItem="hHb-Ho-bPV" secondAttribute="trailing" constant="24" id="QHk-xe-ImD"/>
                                             <constraint firstItem="oNa-J7-IDI" firstAttribute="centerY" secondItem="pfk-wg-j2i" secondAttribute="centerY" id="QVV-FU-8q3"/>
                                             <constraint firstAttribute="trailing" secondItem="mG0-Gr-VzS" secondAttribute="trailing" constant="24" id="RpY-SQ-EQX"/>

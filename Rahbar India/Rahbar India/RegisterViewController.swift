@@ -178,7 +178,7 @@ class RegisterViewController: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
 
-        Utilities().setInterSemiBold(label: alreadyLabel, size: 14)
+        Utilities().setInterMedium(label: alreadyLabel, size: 14)
         alreadyLabel.text = "Already have a Account?"
         alreadyLabel.textColor = UIColor.hexStringToUIColor(hex: "000000")
         
