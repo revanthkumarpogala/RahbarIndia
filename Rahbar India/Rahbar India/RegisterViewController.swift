@@ -200,14 +200,14 @@ class RegisterViewController: UIViewController {
         acceptBtn.setButtonDefaults(
             title: "Terms & Conditions",
             fontName: "Inter-SemiBold",
-            fontSize: 12,
+            fontSize: 14,
             color: UIColor.hexStringToUIColor(hex: "DC3545")
         )
         
         alreadyBtn.setButtonDefaults(
             title: "Login",
             fontName: "Inter-SemiBold",
-            fontSize: 12,
+            fontSize: 14,
             color: UIColor.hexStringToUIColor(hex: "DC3545")
         )
         

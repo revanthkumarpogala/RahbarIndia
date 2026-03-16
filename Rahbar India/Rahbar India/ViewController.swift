@@ -156,7 +156,7 @@ class ViewController: UIViewController {
         signUpBtn.setButtonDefaults(
             title: "Signup",
             fontName: "Inter-SemiBold",
-            fontSize: 12,
+            fontSize: 14,
             color: UIColor.hexStringToUIColor(hex: "DC3545")
         )
         
