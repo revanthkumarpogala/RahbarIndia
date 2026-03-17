@@ -13,48 +13,70 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         window = UIWindow(windowScene: windowScene)
-
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        // Show Splash Screen First
+        let splashVC = storyboard.instantiateViewController(withIdentifier: "splashVC")
+        window?.rootViewController = splashVC
+        window?.makeKeyAndVisible()
 
         let userId = UserSessionManager.shared.getUser()?.id ?? 0
 
-        if userId != 0 {
+        // Helper function for smooth transition
+        func switchRoot(to viewController: UIViewController) {
+            guard let window = self.window else { return }
+            
+            UIView.transition(with: window,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve,
+                              animations: {
+                window.rootViewController = viewController
+            }, completion: nil)
+        }
 
+        if userId != 0 {
+            // User already logged in
+            
             AuthService.shared.fetchWebViewToken { result in
                 
-                switch result {
+                DispatchQueue.main.async {
                     
-                case .success(let token):
-                    print("Token:", token)
-                    
-                    UserSessionManager.shared.saveWebToken(token: token)
-                    DispatchQueue.main.async {
-                        let navController = storyboard.instantiateViewController(withIdentifier: "webnav") as! UINavigationController
-                        self.window?.rootViewController = navController
-
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                        switch result {
+                            
+                        case .success(let token):
+                            print("Token:", token)
+                            UserSessionManager.shared.saveWebToken(token: token)
+                            
+                            let navController = storyboard.instantiateViewController(withIdentifier: "webnav") as! UINavigationController
+                            switchRoot(to: navController)
+                            
+                        case .failure(let error):
+                            print("Error:", error.localizedDescription)
+                            
+                            // Fallback to login if API fails
+                            let navController = storyboard.instantiateViewController(withIdentifier: "lognav") as! UINavigationController
+                            switchRoot(to: navController)
+                        }
                     }
-                    
-                case .failure(let error):
-                    print("Error:", error.localizedDescription)
                 }
-                
             }
 
         } else {
-
+            // User not logged in
+            
             let navController = storyboard.instantiateViewController(withIdentifier: "lognav") as! UINavigationController
-            window?.rootViewController = navController
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                switchRoot(to: navController)
+            }
         }
-
-        window?.makeKeyAndVisible()
     }
-    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

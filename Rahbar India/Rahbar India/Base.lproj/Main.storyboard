@@ -124,6 +124,34 @@
             </objects>
             <point key="canvasLocation" x="-1860.3053435114502" y="966.90140845070425"/>
         </scene>
+        <!--SplashVC-->
+        <scene sceneID="h66-St-1CV">
+            <objects>
+                <viewController storyboardIdentifier="splashVC" id="FUJ-zV-v6d" customClass="splashVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lSz-Om-lVY">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="PsH-a5-M6C">
+                                <rect key="frame" x="101.66666666666669" y="331" width="190" height="190"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="fcJ-8u-zic"/>
+                                    <constraint firstAttribute="width" constant="190" id="nLN-c2-bhs"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4QT-OF-AMm"/>
+                        <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PsH-a5-M6C" firstAttribute="centerX" secondItem="lSz-Om-lVY" secondAttribute="centerX" id="mb4-Uu-apl"/>
+                            <constraint firstItem="PsH-a5-M6C" firstAttribute="centerY" secondItem="lSz-Om-lVY" secondAttribute="centerY" id="oYG-ZC-pbN"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u7i-wW-iPa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1120" y="941"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="hkh-hD-nIM">
             <objects>
@@ -983,6 +1011,7 @@
         <image name="close" width="16" height="16"/>
         <image name="pass_hide" width="16" height="15"/>
         <image name="settings" width="25" height="25"/>
+        <image name="splash" width="190" height="190"/>
         <image name="square" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
