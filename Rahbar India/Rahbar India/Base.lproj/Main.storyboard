@@ -878,7 +878,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKM-4U-VXf">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="172" width="393" height="612"/>
                                 <color key="backgroundColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -899,14 +899,14 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Qfj-kc-HbC"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="aKM-4U-VXf" secondAttribute="trailing" id="Ch6-Th-5uF"/>
+                            <constraint firstItem="aKM-4U-VXf" firstAttribute="bottom" secondItem="Qfj-kc-HbC" secondAttribute="bottom" id="4Vx-8H-Kew"/>
+                            <constraint firstItem="Qfj-kc-HbC" firstAttribute="top" secondItem="aKM-4U-VXf" secondAttribute="top" id="DKp-1c-68k"/>
                             <constraint firstAttribute="trailing" secondItem="ju7-Vr-8kP" secondAttribute="trailing" constant="16" id="Jnh-HI-fhz"/>
-                            <constraint firstItem="aKM-4U-VXf" firstAttribute="top" secondItem="d7c-xG-Tu1" secondAttribute="top" id="KKg-xJ-IKs"/>
                             <constraint firstItem="ju7-Vr-8kP" firstAttribute="top" secondItem="d7c-xG-Tu1" secondAttribute="top" constant="74" id="Po2-QB-pQE"/>
-                            <constraint firstAttribute="bottom" secondItem="aKM-4U-VXf" secondAttribute="bottom" id="thG-Km-niD"/>
-                            <constraint firstItem="aKM-4U-VXf" firstAttribute="leading" secondItem="d7c-xG-Tu1" secondAttribute="leading" id="wcm-QC-nzo"/>
+                            <constraint firstItem="aKM-4U-VXf" firstAttribute="leading" secondItem="Qfj-kc-HbC" secondAttribute="leading" id="mfN-nq-DCz"/>
+                            <constraint firstItem="Qfj-kc-HbC" firstAttribute="trailing" secondItem="aKM-4U-VXf" secondAttribute="trailing" id="qts-ga-PK1"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="00m-cw-JBF"/>
@@ -1017,13 +1017,10 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="separatorColor">
-            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

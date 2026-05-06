@@ -13,7 +13,7 @@ class WebViewController: UIViewController {
         webView.navigationDelegate = self
 
         if #available(iOS 11.0, *) {
-            webView.scrollView.contentInsetAdjustmentBehavior = .never
+            webView.scrollView.contentInsetAdjustmentBehavior = .automatic
         }
 
         webView.scrollView.bounces = false
